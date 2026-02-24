@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="KodNest Premium Build System - A calm, intentional design system for serious B2C products" />
+    <title>KodNest Premium Build System</title>
+    <style>
+/* KodNest Premium Build System - All CSS inlined */
+:root {
+  --color-bg: #F7F6F3;
+  --color-bg-secondary: #FFFFFF;
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+  --color-accent: #8B0000;
+  --color-accent-hover: #6B0000;
+  --color-accent-light: #F5E6E6;
+  --color-success: #5A7D5A;
+  --color-success-bg: #E8F0E8;
+  --color-warning: #B8860B;
+  --color-warning-bg: #F5F0E0;
+  --color-error: #8B0000;
+  --color-error-bg: #F5E6E6;
+  --color-border: #E0DED9;
+  --color-border-strong: #C0BDB5;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 40px;
+  --text-4xl: 48px;
+  --leading-tight: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.05em;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --max-content-width: 1400px;
+  --max-text-width: 720px;
+  --top-bar-height: 64px;
+  --workspace-primary-width: 70%;
+  --workspace-secondary-width: 30%;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 200ms ease-in-out;
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--text-base); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--font-sans); font-size: var(--text-base); line-height: var(--leading-normal); color: var(--color-text-primary); background-color: var(--color-bg); min-height: 100vh; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-serif); font-weight: var(--font-normal); line-height: var(--leading-tight); color: var(--color-text-primary); letter-spacing: var(--tracking-tight); }
+h1 { font-size: var(--text-4xl); margin-bottom: var(--space-3); }
+h2 { font-size: var(--text-3xl); margin-bottom: var(--space-3); }
+h3 { font-size: var(--text-2xl); margin-bottom: var(--space-2); }
+h4 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
+p { max-width: var(--max-text-width); margin-bottom: var(--space-2); line-height: var(--leading-relaxed); }
+p:last-child { margin-bottom: 0; }
+*:focus { outline: none; }
+*:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background-color: var(--color-accent-light); color: var(--color-text-primary); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); padding: var(--space-1) var(--space-2); font-family: var(--font-sans); font-size: var(--text-base); font-weight: var(--font-medium); line-height: 1.5; text-align: center; text-decoration: none; white-space: nowrap; border: 1px solid transparent; border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background-color: var(--color-accent); color: white; border-color: var(--color-accent); }
+.btn-primary:hover:not(:disabled) { background-color: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+.btn-secondary { background-color: transparent; color: var(--color-text-primary); border-color: var(--color-border-strong); }
+.btn-secondary:hover:not(:disabled) { background-color: var(--color-bg-secondary); border-color: var(--color-text-primary); }
+.btn-sm { padding: 6px 12px; font-size: var(--text-sm); }
+.btn-group { display: flex; gap: var(--space-1); }
+
+.input { display: block; width: 100%; padding: var(--space-1) var(--space-2); font-family: var(--font-sans); font-size: var(--text-base); line-height: 1.5; color: var(--color-text-primary); background-color: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); transition: border-color var(--transition-fast), box-shadow var(--transition-fast); }
+.input:hover { border-color: var(--color-border-strong); }
+.input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-light); }
+.input::placeholder { color: var(--color-text-muted); }
+.textarea { min-height: 120px; resize: vertical; }
+.select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: var(--space-3); }
+
+.card { background-color: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-3); }
+.card-header { margin-bottom: var(--space-2); padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border); }
+.card-title { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: var(--font-normal); margin: 0; }
+.card-body { color: var(--color-text-secondary); }
+
+.badge { display: inline-flex; align-items: center; padding: 4px 10px; font-size: var(--text-sm); font-weight: var(--font-medium); border-radius: var(--radius-sm); white-space: nowrap; }
+.badge-default { background-color: var(--color-bg); color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+.badge-accent { background-color: var(--color-accent-light); color: var(--color-accent); border: 1px solid var(--color-accent); }
+.badge-success { background-color: var(--color-success-bg); color: var(--color-success); border: 1px solid var(--color-success); }
+.badge-warning { background-color: var(--color-warning-bg); color: var(--color-warning); border: 1px solid var(--color-warning); }
+
+.alert { display: flex; gap: var(--space-2); padding: var(--space-2); border-radius: var(--radius-md); border: 1px solid; }
+.alert-content { flex: 1; }
+.alert-title { font-weight: var(--font-semibold); margin-bottom: 4px; }
+.alert-message { font-size: var(--text-sm); color: var(--color-text-secondary); margin: 0; }
+.alert-success { background-color: var(--color-success-bg); border-color: var(--color-success); }
+.alert-warning { background-color: var(--color-warning-bg); border-color: var(--color-warning); }
+.alert-error { background-color: var(--color-error-bg); border-color: var(--color-error); }
+
+.checkbox-wrapper { display: flex; align-items: flex-start; gap: var(--space-1); cursor: pointer; }
+.checkbox { width: 18px; height: 18px; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); background-color: var(--color-bg-secondary); cursor: pointer; transition: all var(--transition-fast); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.checkbox:hover { border-color: var(--color-accent); }
+.checkbox.checked { background-color: var(--color-accent); border-color: var(--color-accent); }
+.checkbox.checked::after { content: ''; width: 5px; height: 9px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); margin-bottom: 2px; }
+.checkbox-label { font-size: var(--text-base); color: var(--color-text-primary); line-height: 1.5; }
+.checkbox-hint { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 2px; }
+
+.prompt-box { background-color: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-2); font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: var(--text-sm); line-height: 1.6; color: var(--color-text-primary); white-space: pre-wrap; word-break: break-word; max-height: 200px; overflow-y: auto; }
+.divider { height: 1px; background-color: var(--color-border); margin: var(--space-2) 0; }
+.empty-state { text-align: center; padding: var(--space-5) var(--space-3); }
+.empty-state-title { font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: var(--space-1); }
+.empty-state-message { color: var(--color-text-secondary); margin-bottom: var(--space-2); }
+
+.app { display: flex; flex-direction: column; min-height: 100vh; background-color: var(--color-bg); }
+.top-bar { display: flex; align-items: center; justify-content: space-between; height: var(--top-bar-height); padding: 0 var(--space-3); background-color: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: var(--z-sticky); }
+.top-bar-left { display: flex; align-items: center; gap: var(--space-2); }
+.top-bar-project { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: var(--font-medium); color: var(--color-text-primary); }
+.top-bar-center { display: flex; align-items: center; gap: var(--space-1); }
+.top-bar-progress { font-size: var(--text-sm); color: var(--color-text-secondary); letter-spacing: var(--tracking-wide); }
+.top-bar-right { display: flex; align-items: center; gap: var(--space-2); }
+
+.context-header { padding: var(--space-4) var(--space-3); background-color: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+.context-header-content { max-width: var(--max-content-width); margin: 0 auto; }
+.context-header-title { font-family: var(--font-serif); font-size: var(--text-3xl); font-weight: var(--font-normal); margin: 0 0 var(--space-1) 0; letter-spacing: var(--tracking-tight); }
+.context-header-subtitle { font-size: var(--text-lg); color: var(--color-text-secondary); margin: 0; max-width: var(--max-text-width); line-height: var(--leading-normal); }
+
+.main-content { flex: 1; display: flex; max-width: var(--max-content-width); width: 100%; margin: 0 auto; }
+.primary-workspace { flex: 0 0 var(--workspace-primary-width); padding: var(--space-3); overflow-y: auto; }
+.workspace-section { margin-bottom: var(--space-3); }
+.workspace-section:last-child { margin-bottom: 0; }
+.workspace-section-title { font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: var(--space-2); }
+
+.secondary-panel { flex: 0 0 var(--workspace-secondary-width); padding: var(--space-3); background-color: var(--color-bg-secondary); border-left: 1px solid var(--color-border); overflow-y: auto; }
+.panel-section { margin-bottom: var(--space-3); }
+.panel-section:last-child { margin-bottom: 0; }
+.panel-section-title { font-family: var(--font-serif); font-size: var(--text-lg); margin-bottom: var(--space-1); }
+.panel-section-text { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-bottom: var(--space-2); }
+.panel-actions { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+.proof-footer { background-color: var(--color-bg-secondary); border-top: 1px solid var(--color-border); padding: var(--space-2) var(--space-3); position: sticky; bottom: 0; z-index: var(--z-sticky); }
+.proof-footer-content { max-width: var(--max-content-width); margin: 0 auto; }
+.proof-checklist { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.proof-checklist-title { font-family: var(--font-serif); font-size: var(--text-base); font-weight: var(--font-medium); margin-right: var(--space-1); }
+.proof-item { display: flex; align-items: center; gap: var(--space-1); }
+.proof-item-input { display: flex; align-items: center; gap: var(--space-1); }
+.proof-item-input .input { width: 200px; font-size: var(--text-sm); }
+
+@media (max-width: 1024px) {
+  .main-content { flex-direction: column; }
+  .primary-workspace { flex: 1; width: 100%; }
+  .secondary-panel { flex: 1; width: 100%; border-left: none; border-top: 1px solid var(--color-border); }
+  .proof-checklist { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+}
+@media (max-width: 640px) {
+  .top-bar { padding: 0 var(--space-2); }
+  .top-bar-project { font-size: var(--text-base); }
+  .top-bar-progress { display: none; }
+  .context-header { padding: var(--space-3) var(--space-2); }
+  .context-header-title { font-size: var(--text-2xl); }
+  .primary-workspace, .secondary-panel { padding: var(--space-2); }
+  .proof-footer { padding: var(--space-2); }
+}
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="app">
+        <header class="top-bar" role="banner">
+          <div class="top-bar-left">
+            <span class="top-bar-project">KodNest Design System</span>
+          </div>
+          <div class="top-bar-center">
+            <span class="top-bar-progress">Step 1 / 5</span>
+          </div>
+          <div class="top-bar-right">
+            <span class="badge badge-accent">In Progress</span>
+          </div>
+        </header>
+        
+        <div class="context-header">
+          <div class="context-header-content">
+            <h1 class="context-header-title">Design System Foundation</h1>
+            <p class="context-header-subtitle">Establish the core visual language and component library for consistent product experiences.</p>
+          </div>
+        </div>
+        
+        <main class="main-content">
+          <div class="primary-workspace">
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Typography</h2>
+              </div>
+              <div class="card-body">
+                <h1>Heading 1 - Large Serif</h1>
+                <h2>Heading 2 - Confident & Clear</h2>
+                <h3>Heading 3 - Section Title</h3>
+                <h4>Heading 4 - Subsection</h4>
+                <p>Body text uses a clean sans-serif at 16–18px with line-height 1.6–1.8. Text blocks are constrained to a maximum width of 720px for optimal readability. No decorative fonts, no random sizes—everything follows the system.</p>
+              </div>
+            </section>
+
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Buttons</h2>
+              </div>
+              <div class="card-body">
+                <div class="btn-group" style="margin-bottom: 16px;">
+                  <button class="btn btn-primary">Primary Button</button>
+                  <button class="btn btn-secondary">Secondary Button</button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-primary btn-sm">Small Primary</button>
+                  <button class="btn btn-secondary btn-sm">Small Secondary</button>
+                  <button class="btn btn-primary" disabled>Disabled</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Form Elements</h2>
+              </div>
+              <div class="card-body">
+                <div style="margin-bottom: 16px;">
+                  <label style="display: block; margin-bottom: 8px; font-weight: 500;">Text Input</label>
+                  <input type="text" class="input" placeholder="Enter your text here..." />
+                </div>
+                <div style="margin-bottom: 16px;">
+                  <label style="display: block; margin-bottom: 8px; font-weight: 500;">Select</label>
+                  <select class="input select">
+                    <option>Choose an option</option>
+                    <option>Option One</option>
+                    <option>Option Two</option>
+                    <option>Option Three</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display: block; margin-bottom: 8px; font-weight: 500;">Textarea</label>
+                  <textarea class="input textarea" placeholder="Enter longer text..."></textarea>
+                </div>
+              </div>
+            </section>
+
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Alerts & Feedback</h2>
+              </div>
+              <div class="card-body">
+                <div class="alert alert-success" style="margin-bottom: 16px;">
+                  <div class="alert-content">
+                    <div class="alert-title">Success</div>
+                    <p class="alert-message">The operation completed successfully. Everything is working as expected.</p>
+                  </div>
+                </div>
+                <div class="alert alert-warning" style="margin-bottom: 16px;">
+                  <div class="alert-content">
+                    <div class="alert-title">Warning</div>
+                    <p class="alert-message">Please review your settings before proceeding. Some options may need attention.</p>
+                  </div>
+                </div>
+                <div class="alert alert-error">
+                  <div class="alert-content">
+                    <div class="alert-title">Error</div>
+                    <p class="alert-message">Something went wrong. Check your connection and try again. The error has been logged.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Checkboxes</h2>
+              </div>
+              <div class="card-body">
+                <div class="checkbox-wrapper" style="margin-bottom: 12px;">
+                  <div class="checkbox" data-checkbox role="checkbox" aria-checked="false" tabindex="0"></div>
+                  <div>
+                    <div class="checkbox-label">Enable notifications</div>
+                    <div class="checkbox-hint">Receive updates about your project status</div>
+                  </div>
+                </div>
+                <div class="checkbox-wrapper">
+                  <div class="checkbox checked" data-checkbox role="checkbox" aria-checked="true" tabindex="0"></div>
+                  <div>
+                    <div class="checkbox-label">Auto-save changes</div>
+                    <div class="checkbox-hint">Your work is saved automatically</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Badges</h2>
+              </div>
+              <div class="card-body">
+                <div class="btn-group">
+                  <span class="badge badge-default">Default</span>
+                  <span class="badge badge-accent">Accent</span>
+                  <span class="badge badge-success">Success</span>
+                  <span class="badge badge-warning">Warning</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="workspace-section card">
+              <div class="card-header">
+                <h2 class="card-title">Empty State</h2>
+              </div>
+              <div class="card-body">
+                <div class="empty-state" style="padding: 40px 24px;">
+                  <h3 class="empty-state-title">No items yet</h3>
+                  <p class="empty-state-message">Get started by creating your first item. It only takes a moment.</p>
+                  <button class="btn btn-primary">Create Item</button>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="secondary-panel">
+            <section class="panel-section">
+              <h3 class="panel-section-title">Current Step</h3>
+              <p class="panel-section-text">Build the core button component with all states and variants. This establishes the foundation for interactive elements across the system.</p>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="panel-section">
+              <h3 class="panel-section-title">Prompt</h3>
+              <div id="prompt-text" class="prompt-box">Create a premium button component with the following specifications:
+
+- Primary: solid deep red (#8B0000) background
+- Secondary: outlined with border
+- Consistent 8px border radius
+- 150ms ease-in-out transitions
+- Clean focus states with 2px outline
+- Disabled state with 50% opacity
+
+Include all states: default, hover, active, focus, disabled.</div>
+              <button class="btn btn-secondary btn-sm" data-copy="prompt-text" style="margin-top: 12px; width: 100%;">Copy Prompt</button>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="panel-section">
+              <h3 class="panel-section-title">Actions</h3>
+              <div class="panel-actions" style="flex-direction: column;">
+                <button class="btn btn-primary" style="width: 100%;">Build in Lovable</button>
+                <div class="btn-group" style="width: 100%;">
+                  <button class="btn btn-secondary btn-sm" style="flex: 1;">It Worked</button>
+                  <button class="btn btn-secondary btn-sm" style="flex: 1;">Error</button>
+                </div>
+                <button class="btn btn-secondary btn-sm" style="width: 100%;">Add Screenshot</button>
+              </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <section class="panel-section">
+              <h3 class="panel-section-title">Need Help?</h3>
+              <p class="panel-section-text">If you encounter issues, document the error message and steps taken. Clear documentation helps resolve problems faster.</p>
+            </section>
+          </aside>
+        </main>
+        
+        <footer class="proof-footer">
+          <div class="proof-footer-content">
+            <div class="proof-checklist">
+              <span class="proof-checklist-title">Completion Checklist:</span>
+              <div class="proof-item">
+                <div class="checkbox-wrapper">
+                  <div class="checkbox" data-checkbox id="ui-built-checkbox" role="checkbox" aria-checked="false" tabindex="0"></div>
+                  <span class="checkbox-label">UI Built</span>
+                </div>
+                <div class="proof-item-input">
+                  <input type="text" class="input" data-proof-input placeholder="Commit hash or link" aria-label="UI Built proof" />
+                </div>
+              </div>
+              <div class="proof-item">
+                <div class="checkbox-wrapper">
+                  <div class="checkbox" data-checkbox id="logic-working-checkbox" role="checkbox" aria-checked="false" tabindex="0"></div>
+                  <span class="checkbox-label">Logic Working</span>
+                </div>
+                <div class="proof-item-input">
+                  <input type="text" class="input" data-proof-input placeholder="Test results" aria-label="Logic Working proof" />
+                </div>
+              </div>
+              <div class="proof-item">
+                <div class="checkbox-wrapper">
+                  <div class="checkbox" data-checkbox id="test-passed-checkbox" role="checkbox" aria-checked="false" tabindex="0"></div>
+                  <span class="checkbox-label">Test Passed</span>
+                </div>
+                <div class="proof-item-input">
+                  <input type="text" class="input" data-proof-input placeholder="Test suite link" aria-label="Test Passed proof" />
+                </div>
+              </div>
+              <div class="proof-item">
+                <div class="checkbox-wrapper">
+                  <div class="checkbox" data-checkbox id="deployed-checkbox" role="checkbox" aria-checked="false" tabindex="0"></div>
+                  <span class="checkbox-label">Deployed</span>
+                </div>
+                <div class="proof-item-input">
+                  <input type="text" class="input" data-proof-input placeholder="Deployment URL" aria-label="Deployed proof" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Initialize interactions
+      document.addEventListener('DOMContentLoaded', function() {
+        // Checkbox toggle
+        document.querySelectorAll('[data-checkbox]').forEach(function(checkbox) {
+          checkbox.addEventListener('click', function() {
+            this.classList.toggle('checked');
+            this.setAttribute('aria-checked', this.classList.contains('checked'));
+          });
+        });
+
+        // Copy button
+        document.querySelectorAll('[data-copy]').forEach(function(button) {
+          button.addEventListener('click', async function() {
+            var targetId = this.dataset.copy;
+            var targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              try {
+                await navigator.clipboard.writeText(targetElement.textContent);
+                var originalText = this.textContent;
+                this.textContent = 'Copied';
+                setTimeout(function() { button.textContent = originalText; }, 2000);
+              } catch (err) {
+                console.error('Failed to copy:', err);
+              }
+            }
+          });
+        });
+
+        // Proof input auto-check
+        document.querySelectorAll('[data-proof-input]').forEach(function(input) {
+          input.addEventListener('change', function() {
+            var checkbox = this.closest('.proof-item')?.querySelector('[data-checkbox]');
+            if (checkbox && this.value.trim()) {
+              checkbox.classList.add('checked');
+              checkbox.setAttribute('aria-checked', 'true');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
